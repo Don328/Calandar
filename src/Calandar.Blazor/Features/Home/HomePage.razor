@@ -1,0 +1,8 @@
+﻿@page "/"
+
+@_today.ToString(DateFormat.full)
+<h3>Calandar</h3>
+@if (_viewMode == ViewMode.CurrentYear)
+{
+    <h5>@DateTime.Today.ToString("yyyy")</h5>
+}
