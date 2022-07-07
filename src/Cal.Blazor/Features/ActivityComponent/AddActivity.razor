@@ -1,0 +1,25 @@
+﻿<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h4>New Activity </h4>
+                <p>@Date.ToString("MMM d, yyyy")</p>
+            </div>
+            <div class="col-1">
+                <button type="button"
+                    class="btn btn-close btn-sm"
+                    data-bs-toggle="tooltip"
+                    title="Cancel"
+                    @onclick=Cancel />
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <EditForm Model=_activity OnSubmit=Submit>
+            <div class="row input-group">
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+
