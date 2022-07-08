@@ -10,21 +10,48 @@ namespace Cal.Blazor.Features.Home
                 DateTime.Today.Month,
                 DateTime.Today.Day));
 
-        private List<DayModel> OneWeekSchedule
-            = new List<DayModel>();
+        private List<DayModel> _currentWeekSchedule
+            = new();
+
+        private List<DayModel> _currentMonthScheduel
+            = new();
 
         private DayModel _selectedDay = default!;
         private bool _showAddActivity = false;
 
         protected override async Task OnInitializedAsync()
         {
-            for (int i = 0; i < 7; i++)
-            {
-                var date = _today.Date;
-                OneWeekSchedule.Add(new DayModel(date.AddDays(i)));
-            }
+            GetCurrentWeekSchedule();
+            GetCurrentMonthSchdule();
 
             await base.OnInitializedAsync();
+        }
+
+        private void GetCurrentWeekSchedule()
+        {
+            var offset = -(int)_today.Date.DayOfWeek;
+
+            for (int i = 0; i < 7; i++)
+            {
+                _currentWeekSchedule.Add(new DayModel(
+                        _today.Date.AddDays(offset)));
+                offset++;
+            }
+        }
+
+        private void GetCurrentMonthSchdule()
+        {
+            var offset = -(int)_today.Date.Day +1;
+            var day = new DayModel(
+                _today.Date.AddDays(offset));
+            var month = _today.Date.Month;
+
+            while(day.Date.Month == month)
+            {
+                _currentMonthScheduel.Add(day);
+                day = new DayModel(day.Date.AddDays(1));
+            }
+            
         }
 
         private void HideAddActivity() => _showAddActivity = false;

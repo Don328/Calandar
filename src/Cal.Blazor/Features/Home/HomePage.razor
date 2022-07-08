@@ -5,23 +5,29 @@
 <div class="row">
     <div class="col-4">
         <h4>Today</h4>
-        <DayView Day="(_today)"
-            OnShowAddTask=ShowAddActivity/>
+        <DayView Day=_today
+                 OnShowAddTask=ShowAddActivity />
     </div>
     @if (_showAddActivity)
     {
         <div class="col-4">
             <AddActivity OnCancel=HideAddActivity
-                OnSubmit=SubmitNewActivity
-                Date=_selectedDay.Date />
+                     OnSubmit=SubmitNewActivity
+                     Date=_selectedDay.Date />
         </div>
     }
 </div>
 <div class="row">
-    <div class="col">
-        <h4>Week</h4>
-        <WeekView Days=OneWeekSchedule
-            OnShowAddTask=ShowAddActivity/>
+    <h4>Week</h4>
+    <div class="card-group">
+        <WeekView Days=_currentWeekSchedule
+                  OnShowAddTask=ShowAddActivity />
     </div>
 </div>
+    <h4>Month</h4>
+    <div class="card-group">
+        <MonthView Days=_currentMonthScheduel
+                Today=_today
+                OnShowAddTask=ShowAddActivity />
+    </div>
 

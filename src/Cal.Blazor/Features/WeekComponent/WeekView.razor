@@ -1,7 +1,5 @@
-﻿<div class="row">
-    @foreach(var day in Days)
-    {
-        <DayView Day=day
-            OnShowAddTask=HandleShowAddTask/>
-    }
-</div>
+﻿@foreach (var day in Days)
+{
+    <DayView Day=day
+         OnShowAddTask=HandleShowAddTask />
+}

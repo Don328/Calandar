@@ -1,0 +1,7 @@
+﻿@foreach (var week in _weeks)
+{
+    <div class="card-group" style="width:100%">
+        <WeekView Days=week
+              OnShowAddTask=HandleShowAddTask />
+    </div>
+}
