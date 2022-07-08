@@ -1,5 +1,9 @@
 ﻿@foreach (var day in Days)
 {
     <DayView Day=day
-         OnShowAddTask=HandleShowAddTask />
+         OnSubmit=Submit 
+         DisplayDayOfWeek=DisplayDateInfo
+         DisplayMonth=DisplayDateInfo
+         ButtonText="View"
+         ToolTipText="Show details for this day"/>
 }

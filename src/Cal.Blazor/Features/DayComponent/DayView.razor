@@ -1,6 +1,26 @@
 ﻿<div class="card" style="width:fit-content">
     <div class="card-header">
-        @DisplayAbriviatedDay(Day.Date.DayOfWeek), @Day.Date.ToString("MMM d, yyyy")
+        @if (DisplayDayOfWeek)
+        {
+            <span>
+                @DisplayAbriviatedDay(Day.Date.DayOfWeek)
+            </span>
+        }
+        @if (DisplayMonth)
+        {
+            <span>
+                @Day.Date.ToString(", MMM ")
+            </span>
+        }
+        <span>
+            @Day.Date.Day
+        </span>
+        @if (DisplayYear)
+        {
+            <span>
+                @Day.Date.ToString(", yyyy")
+            </span>
+        }
     </div>
     @if (Day.Activities.Any())
     {
@@ -30,12 +50,12 @@
         Day.Date.Day >= _today.Day)
     {
         <div class="card-footer">
-            <button class="btn btn-sm btn-outline-primary shadow"
+            <button class="btn-sm btn-secondary shadow badge"
                     type="button"
-                    data-bs-toggle="tooltip"
+                    data-bs-toggle=@ToolTipText
                     title="Schedule a task on this day"
-                    @onclick=HandleShowAddTask>
-                New Task
+                    @onclick=Submit>
+                @ButtonText
             </button>
         </div>
     }

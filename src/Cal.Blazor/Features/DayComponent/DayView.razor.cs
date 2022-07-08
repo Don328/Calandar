@@ -6,20 +6,41 @@ public partial class DayView : ComponentBase
 {
     private DateTime _today;
 
+    [Parameter]
+    public bool DisplayDayOfWeek { get; set; }
+        = false;
+
+    [Parameter]
+    public bool DisplayMonth { get; set; }
+        = false;
+
+    [Parameter]
+    public bool DisplayYear { get; set; } = false;
+
+
+    [Parameter]
+    public bool AlwayShowButton { get; set; } = false;
+
+    [Parameter, EditorRequired]
+    public string ButtonText { get; set; } = default!;
+
+    [Parameter, EditorRequired]
+    public string ToolTipText { get; set; } = default!;
+
     [Parameter, EditorRequired]
     public DayModel Day { get; set; } = default!;
 
     [Parameter, EditorRequired]
-    public EventCallback<DayModel> OnShowAddTask { get; set; }
+    public EventCallback<DayModel> OnSubmit { get; set; }
 
     protected override void OnInitialized()
     {
         _today = DateTime.Today;
     }
 
-    private async Task HandleShowAddTask()
+    private async Task Submit()
     {
-        await OnShowAddTask.InvokeAsync(Day);
+        await OnSubmit.InvokeAsync(Day);
     }
 
     private string DisplayAbriviatedDay(DayOfWeek day)

@@ -4,9 +4,29 @@
 <hr />
 <div class="row">
     <div class="col-4">
-        <h4>Today</h4>
-        <DayView Day=_today
-                 OnShowAddTask=ShowAddActivity />
+        @if (_selectedDay.Date == _today.Date)
+        {
+            <h4>Today</h4>
+        }
+        else
+        {
+            <button type="button"
+                class="btn-sm btn-outline-dark badge shadow"
+                @onclick=SelectToday
+                data-bs-toggle="tooltip"
+                title="Display today's date">
+                Today
+            </button>
+            <h4>Selected Day</h4>
+        }
+        <DayView Day=_selectedDay
+                     OnSubmit=ShowAddActivity
+                     DisplayDayOfWeek=true
+                     DisplayMonth=true
+                     DisplayYear=true
+                     ButtonText="New Task"
+                     ToolTipText="Add a scheduled activity"
+                     AlwayShowButton=true />
     </div>
     @if (_showAddActivity)
     {
@@ -21,13 +41,14 @@
     <h4>Week</h4>
     <div class="card-group">
         <WeekView Days=_currentWeekSchedule
-                  OnShowAddTask=ShowAddActivity />
+                  OnSubmit=SelectDay
+                  DisplayDateInfo=true />
     </div>
 </div>
     <h4>Month</h4>
     <div class="card-group">
         <MonthView Days=_currentMonthScheduel
                 Today=_today
-                OnShowAddTask=ShowAddActivity />
+                OnShowAddTask=SelectDay />
     </div>
 

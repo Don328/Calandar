@@ -21,6 +21,7 @@ namespace Cal.Blazor.Features.Home
 
         protected override async Task OnInitializedAsync()
         {
+            _selectedDay = _today;
             GetCurrentWeekSchedule();
             GetCurrentMonthSchdule();
 
@@ -62,6 +63,12 @@ namespace Cal.Blazor.Features.Home
             _selectedDay = day;
         }
 
+        private void SelectToday() => _selectedDay = _today;
+
+        private void SelectDay(DayModel day)
+        {
+            _selectedDay = day;
+        }
 
         private void SubmitNewActivity()
         {
