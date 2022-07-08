@@ -13,7 +13,11 @@
             </span>
         }
         <span>
-            @Day.Date.Day
+            @if(DisplayPassedDays ||
+                Day.Date.Month >= _today.Month)
+            {
+                @Day.Date.Day
+            }
         </span>
         @if (DisplayYear)
         {
@@ -45,19 +49,21 @@
             }
         </div>
     }
-    @if (Day.Date.Year >= _today.Year &&
-        Day.Date.Month >= _today.Month &&
-        Day.Date.Day >= _today.Day)
+    @if (AlwayShowButton ||
+        Day.Date >= _today)
     {
-        <div class="card-footer">
-            <button class="btn-sm btn-secondary shadow badge"
-                    type="button"
-                    data-bs-toggle=@ToolTipText
-                    title="Schedule a task on this day"
-                    @onclick=Submit>
-                @ButtonText
-            </button>
-        </div>
+        @if (Day.Date.Month >= _today.Month)
+        {
+            <div class="card-footer">
+                <button class="btn-sm btn-secondary shadow badge"
+                        type="button"
+                        data-bs-toggle=@ToolTipText
+                        title="Schedule a task on this day"
+                        @onclick=Submit>
+                    @ButtonText
+                </button>
+            </div>
+        }
     }
 </div>
 

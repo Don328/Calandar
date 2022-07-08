@@ -4,7 +4,7 @@ namespace Cal.Blazor.Features.DayComponent;
 
 public partial class DayView : ComponentBase
 {
-    private DateTime _today;
+    private DateOnly _today;
 
     [Parameter]
     public bool DisplayDayOfWeek { get; set; }
@@ -17,6 +17,8 @@ public partial class DayView : ComponentBase
     [Parameter]
     public bool DisplayYear { get; set; } = false;
 
+    [Parameter]
+    public bool DisplayPassedDays { get; set; } = false;
 
     [Parameter]
     public bool AlwayShowButton { get; set; } = false;
@@ -35,7 +37,9 @@ public partial class DayView : ComponentBase
 
     protected override void OnInitialized()
     {
-        _today = DateTime.Today;
+        var today = DateTime.Today;
+        _today = new DateOnly(
+            today.Year, today.Month, today.Day);
     }
 
     private async Task Submit()

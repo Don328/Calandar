@@ -68,6 +68,7 @@ namespace Cal.Blazor.Features.Home
         private void SelectDay(DayModel day)
         {
             _selectedDay = day;
+            _showAddActivity = false;
         }
 
         private void SubmitNewActivity()
