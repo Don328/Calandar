@@ -1,4 +1,4 @@
-﻿<div class="card" style="width:fit-content">
+﻿<div class="card">
     <div class="card-header">
         @if (DisplayDayOfWeek)
         {
@@ -26,7 +26,7 @@
             </span>
         }
     </div>
-    <div class="card-body" style="width:100%">
+    <div class="card-body">
         @if (Day.Activities.Any())
         {
             <div class="row">
@@ -48,7 +48,7 @@
                 </div>
             }
         }
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <div class="submit-button d-grid gap-2 d-md-flex justify-content-md-end">
             @if (AlwayShowButton ||
             (Day.Date >= _today
             && Day.Date.Month == _today.Month))

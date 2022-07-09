@@ -1,0 +1,13 @@
+﻿.card {
+    width:fit-content;
+    border-color:var(--neutral-dark);
+}
+
+.card-header {
+    background-color: var(--primary);
+    color: var(--neutral-dark);
+}
+
+.card-body{
+    width:100%;
+}

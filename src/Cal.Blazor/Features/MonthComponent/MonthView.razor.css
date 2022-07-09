@@ -1,0 +1,8 @@
+﻿.card-group {
+    width:100%;
+}
+
+.card-header {
+    background-color:var(--neutral-dark);
+    color:var(--primary);
+}

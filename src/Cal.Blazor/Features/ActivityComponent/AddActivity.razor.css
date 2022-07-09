@@ -1,0 +1,8 @@
+﻿.card {
+    border-color:var(--neutral-dark);
+}
+
+.card-header {
+    background-color: var(--neutral-dark);
+    color: var(--primary);
+}
