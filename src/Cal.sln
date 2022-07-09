@@ -5,6 +5,10 @@ VisualStudioVersion = 17.2.32414.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cal.Blazor", "Cal.Blazor\Cal.Blazor.csproj", "{DD8232F1-A88F-4D09-8756-53DC58901214}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cal.Api", "Cal.Api\Cal.Api.csproj", "{CC4A89DE-E57E-4A23-82D1-D0F42C36A5E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cal.Shared", "Cal.Shared\Cal.Shared.csproj", "{AAE106C9-0672-4B5D-BDE3-672453C48959}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{DD8232F1-A88F-4D09-8756-53DC58901214}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD8232F1-A88F-4D09-8756-53DC58901214}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD8232F1-A88F-4D09-8756-53DC58901214}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4A89DE-E57E-4A23-82D1-D0F42C36A5E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4A89DE-E57E-4A23-82D1-D0F42C36A5E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4A89DE-E57E-4A23-82D1-D0F42C36A5E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4A89DE-E57E-4A23-82D1-D0F42C36A5E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE106C9-0672-4B5D-BDE3-672453C48959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE106C9-0672-4B5D-BDE3-672453C48959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE106C9-0672-4B5D-BDE3-672453C48959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE106C9-0672-4B5D-BDE3-672453C48959}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
