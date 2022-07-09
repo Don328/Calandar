@@ -1,4 +1,15 @@
-﻿@foreach (var week in _weeks)
+﻿
+<div class="card-group" style="width:100%">
+    @foreach(var label in _header)
+    {
+        <div class="card">
+            <div class="card-header alert-dark">
+                @label    
+            </div>
+        </div>
+    }
+</div>
+@foreach (var week in _weeks)
 {
     <div class="card-group" style="width:100%">
         <WeekView Days=week

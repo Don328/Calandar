@@ -19,13 +19,15 @@ namespace Cal.Blazor.Features.Home
         private DayModel _selectedDay = default!;
         private bool _showAddActivity = false;
 
-        protected override async Task OnInitializedAsync()
+
+
+        protected override async Task OnParametersSetAsync()
         {
             _selectedDay = _today;
             GetCurrentWeekSchedule();
             GetCurrentMonthSchdule();
 
-            await base.OnInitializedAsync();
+            await base.OnParametersSetAsync();
         }
 
         private void GetCurrentWeekSchedule()

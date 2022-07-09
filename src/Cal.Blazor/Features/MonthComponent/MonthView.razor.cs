@@ -7,7 +7,7 @@ namespace Cal.Blazor.Features.MonthComponent
     {
         private DateOnly _cursor = default!;
         private List<List<DayModel>> _weeks = new();
-
+        private string[] _header = default!;
 
         [Parameter, EditorRequired]
         public IEnumerable<DayModel> Days { get; set; }
@@ -51,7 +51,7 @@ namespace Cal.Blazor.Features.MonthComponent
 
         private void LoadWeekBuffer()
         {
-            
+            AddWeekHeader();
             var week = new List<DayModel>();
             for (int i = 0; i < 7; i++)
             {
@@ -66,6 +66,20 @@ namespace Cal.Blazor.Features.MonthComponent
                 LoadWeekBuffer();
             }
 
+        }
+
+        private void AddWeekHeader()
+        {
+            _header = new string[7]
+            {
+                "Sunday",
+                "Monday",
+                "Tudesday",
+                "Wednsday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            };
         }
 
         private async Task HandleShowAddTask(DayModel day)

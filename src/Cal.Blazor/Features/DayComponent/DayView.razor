@@ -13,8 +13,8 @@
             </span>
         }
         <span>
-            @if(DisplayPassedDays ||
-                Day.Date.Month >= _today.Month)
+            @if (DisplayPassedDays ||
+            Day.Date.Month == _today.Month)
             {
                 @Day.Date.Day
             }
@@ -26,9 +26,9 @@
             </span>
         }
     </div>
-    @if (Day.Activities.Any())
-    {
-        <div class="card-body" style="width:fit-content">
+    <div class="card-body" style="width:100%">
+        @if (Day.Activities.Any())
+        {
             <div class="row">
                 <strong>Schedule</strong>
             </div>
@@ -47,23 +47,24 @@
                     @activity.Description
                 </div>
             }
-        </div>
-    }
-    @if (AlwayShowButton ||
-        Day.Date >= _today)
-    {
-        @if (Day.Date.Month >= _today.Month)
-        {
-            <div class="card-footer">
-                <button class="btn-sm btn-secondary shadow badge"
-                        type="button"
-                        data-bs-toggle=@ToolTipText
-                        title="Schedule a task on this day"
-                        @onclick=Submit>
-                    @ButtonText
-                </button>
-            </div>
         }
-    }
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            @if (AlwayShowButton ||
+            (Day.Date >= _today
+            && Day.Date.Month == _today.Month))
+            {
+                @if (Day.Date.Month == _today.Month)
+                {
+                    <button class="btn-sm btn-secondary shadow badge"
+                    type="button"
+                    data-bs-toggle=@ToolTipText
+                    title="Schedule a task on this day"
+                    @onclick=Submit>
+                        @ButtonText
+                    </button>
+                }
+            }
+        </div>
+    </div>
 </div>
 
