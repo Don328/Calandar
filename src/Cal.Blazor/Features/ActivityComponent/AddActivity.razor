@@ -7,16 +7,53 @@
             </div>
             <div class="col-1">
                 <button type="button"
-                    class="btn btn-close btn-sm"
-                    data-bs-toggle="tooltip"
-                    title="Cancel"
-                    @onclick=Cancel />
+                        class="btn btn-close btn-sm"
+                        data-bs-toggle="tooltip"
+                        title="Cancel"
+                        @onclick=Cancel />
             </div>
         </div>
     </div>
     <div class="card-body">
         <EditForm Model=_activity OnSubmit=Submit>
-            <div class="row input-group">
+            <div class="mt-2 mb-2">
+                <div class="card card-brand mb-4 shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <label for="name"
+                                       class="font-weight-bold text-secondary">
+                                    Name
+                                </label>
+                                <InputText @bind-Value=_activity.Name
+                                           class="form-control"
+                                           id="name" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="description"
+                                       class="font-weight-bold text-secondary">
+                                    Description
+                                </label>
+                                <InputText @bind-Value=_activity.Description
+                                           class="form-control"
+                                           id="description" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:1em;">
+                        <TimeInput OnTimeSet=HandleTimeSet />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-8 col-4 text-right">
+                        <button class="btn btn-outline-secondary"
+                                type="submit">
+                            Save
+                        </button>
+                    </div>
+                </div>
             </div>
         </EditForm>
     </div>

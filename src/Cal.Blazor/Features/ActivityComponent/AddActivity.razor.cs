@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Cal.Shared.Features.Activities;
+using Microsoft.AspNetCore.Components;
 
 namespace Cal.Blazor.Features.ActivityComponent
 {
     public partial class AddActivity : ComponentBase
     {
-        private ActivityModel _activity = default!;
+        private ActivityDto _activity = new();
 
         [Parameter, EditorRequired]
-        public EventCallback<ActivityModel> OnSubmit { get; set; }
+        public EventCallback<ActivityDto> OnSubmit { get; set; }
 
         [Parameter, EditorRequired]
         public EventCallback OnCancel { get; set; }
@@ -17,8 +18,17 @@ namespace Cal.Blazor.Features.ActivityComponent
 
         protected override async Task OnInitializedAsync()
         {
-            _activity = new(Date);
+            _activity.Date = Date;
             await base.OnInitializedAsync();
+        }
+
+        private async Task HandleTimeSet(TimeOnly time)
+        {
+            _activity.Time = time;
+            var hour = _activity.Time.Hour;
+            var min = _activity.Time.Minute;
+
+            await Task.CompletedTask;
         }
 
         private async Task Submit()

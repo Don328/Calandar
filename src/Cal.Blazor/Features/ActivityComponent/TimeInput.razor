@@ -1,0 +1,59 @@
+﻿<div class="offset-3 col-3" style="margin-right:1em;">
+    <div class="row">
+        <label for="hour-select"
+               class="font-weight-bold text-secondary">
+            Hour
+        </label>
+    </div>
+    <div class="row">
+        <InputSelect id="hour-select"
+                     @bind-Value=_hour
+                     @onfocusout=HandleTimeSet >
+            @foreach (var hour in _hours)
+            {
+                <option value=@hour>@hour</option>
+            }
+        </InputSelect>
+    </div>
+</div>
+<div class="col-3" style="margin-right:1em;">
+    <div class="row">
+        <label for="minute-select"
+               class="font-weight-bold text-secondary">
+            Minute
+        </label>
+    </div>
+    <div class="row">
+        <InputSelect id="minute-select"
+                     @bind-Value=_min
+                     @onfocusout=HandleTimeSet>
+            @foreach (var min in _minutes)
+            {
+                <option value=@min>@min</option>
+            }
+        </InputSelect>
+    </div>
+</div>
+<div class="col-2">
+    <div class="row justify-content-center">
+        <label for="am-pm"
+               class="font-weight-bold text-secondary">
+            @if (_pm)
+            {
+                <span>PM</span>
+            }
+            else
+            {
+                <span>AM</span>
+            }
+        </label>
+    </div>
+    <div class="row">
+        <div class="form-check form-switch">
+            <InputCheckbox @bind-Value=_pm
+                           @onchange=TogglePM
+                           @onfocusout=HandleTimeSet
+                           class="form-check-input" />
+        </div>
+    </div>
+</div>

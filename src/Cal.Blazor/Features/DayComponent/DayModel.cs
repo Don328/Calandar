@@ -1,4 +1,4 @@
-﻿using Cal.Blazor.Features.ActivityComponent;
+﻿using Cal.Shared.Features.Activities;
 
 namespace Cal.Blazor.Features.DayComponent
 {
@@ -7,10 +7,10 @@ namespace Cal.Blazor.Features.DayComponent
         public DayModel(DateOnly date)
         {
             Date = date;
-            Activities = new List<ActivityModel>();
+            Activities = new List<ActivityDto>();
         }
 
         public DateOnly Date { get; }
-        public IEnumerable<ActivityModel> Activities { get; set; }
+        public IEnumerable<ActivityDto> Activities { get; set; }
     }
 }

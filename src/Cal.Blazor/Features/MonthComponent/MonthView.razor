@@ -1,5 +1,5 @@
 ﻿
-<div class="card-group">
+<div class="card-group shadow-lg">
     @foreach(var label in _header)
     {
         <div class="card">
@@ -11,7 +11,7 @@
 </div>
 @foreach (var week in _weeks)
 {
-    <div class="card-group">
+    <div class="card-group shadow-lg">
         <WeekView Days=week
               OnSubmit=HandleShowAddTask />
     </div>
