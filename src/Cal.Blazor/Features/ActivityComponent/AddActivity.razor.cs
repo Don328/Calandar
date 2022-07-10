@@ -6,6 +6,8 @@ namespace Cal.Blazor.Features.ActivityComponent
     public partial class AddActivity : ComponentBase
     {
         private ActivityDto _activity = new();
+        private bool _timeIsSet = false;
+        private string _timeSectionError = "";
 
         [Parameter, EditorRequired]
         public EventCallback<ActivityDto> OnSubmit { get; set; }
@@ -27,13 +29,22 @@ namespace Cal.Blazor.Features.ActivityComponent
             _activity.Time = time;
             var hour = _activity.Time.Hour;
             var min = _activity.Time.Minute;
+            _timeIsSet = true;
 
             await Task.CompletedTask;
         }
 
         private async Task Submit()
         {
-            await OnSubmit.InvokeAsync(_activity);
+            if (_timeIsSet)
+            {
+                _timeSectionError = "";
+                await OnSubmit.InvokeAsync(_activity);
+            }
+            else
+            {
+                _timeSectionError = "Please select a time";
+            }
         }
 
         private async Task Cancel()

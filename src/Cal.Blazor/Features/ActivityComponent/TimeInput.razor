@@ -8,7 +8,7 @@
     <div class="row">
         <InputSelect id="hour-select"
                      @bind-Value=_hour
-                     @onfocusout=HandleTimeSet >
+                     @onfocusout=HandleHourSet>
             @foreach (var hour in _hours)
             {
                 <option value=@hour>@hour</option>
@@ -26,7 +26,7 @@
     <div class="row">
         <InputSelect id="minute-select"
                      @bind-Value=_min
-                     @onfocusout=HandleTimeSet>
+                     @onfocusout=HandleMinuteSet>
             @foreach (var min in _minutes)
             {
                 <option value=@min>@min</option>
@@ -38,7 +38,7 @@
     <div class="row justify-content-center">
         <label for="am-pm"
                class="font-weight-bold text-secondary">
-            @if (_pm)
+            @if (_isPM)
             {
                 <span>PM</span>
             }
@@ -50,10 +50,12 @@
     </div>
     <div class="row">
         <div class="form-check form-switch">
-            <InputCheckbox @bind-Value=_pm
+            <InputCheckbox @bind-Value=_isPM
                            @onchange=TogglePM
-                           @onfocusout=HandleTimeSet
                            class="form-check-input" />
         </div>
     </div>
+</div>
+<div class="row text-danger justify-content-center">
+    @ErrorMessage
 </div>

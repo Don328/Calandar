@@ -9,10 +9,14 @@ namespace Cal.Blazor.Features.ActivityComponent
         private List<int> _minutes = new();
         private int _hour;
         private int _min;
-
-        private bool _pm = false;
+        private bool _hourIsSet;
+        private bool _minuteIsSet;
+        private bool _isPM = false;
 
         private TimeOnly _time = new();
+
+        [Parameter, EditorRequired]
+        public string ErrorMessage { get; set; } = "";
 
         [Parameter, EditorRequired]
         public EventCallback<TimeOnly> OnTimeSet { get; set; }
@@ -27,14 +31,35 @@ namespace Cal.Blazor.Features.ActivityComponent
 
         private async Task TogglePM()
         {
-            _pm = !_pm;
-            await HandleTimeSet();
+            _isPM = !_isPM;
+            if (_hourIsSet && _minuteIsSet)
+            {
+                await HandleTimeSet();
+            }
+        }
+
+        private async Task HandleHourSet()
+        {
+            _hourIsSet = true;
+            if (_minuteIsSet)
+            {
+                await HandleTimeSet();
+            }
+        }
+
+        private async Task HandleMinuteSet()
+        {
+            _minuteIsSet = true;
+            if(_hourIsSet)
+            {
+                await HandleTimeSet();
+            }
         }
 
         private async Task HandleTimeSet()
         {
             var hour = _hour;
-            if (_pm)
+            if (_isPM)
             {
                 hour += 12;
             }
